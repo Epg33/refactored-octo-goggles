@@ -4,12 +4,7 @@ const path = require('path')
 
 const PORT = 4000
 
-app.use( "/",express.static(path.join( __dirname,'/public')))
-
-
-// app.get("/", (req, res)=>{
-//   res.send("hello world")
-// })
+app.use( "/",express.static(path.join( __dirname,'/client')))
 
 app.listen(PORT, ()=>{
   console.log(`Server running on port ${PORT}`);
