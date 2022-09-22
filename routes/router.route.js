@@ -9,6 +9,13 @@ router.get('/', async (req, res)=>{
   // console.log("tareas");
 })
 
+router.get('/:id', async (req, res)=>{
+    const id = req.params.id;
+    const homeWork = await Task.findById(id);
+    res.send(homeWork);
+    // console.log("la tarea");
+})
+
 router.post("/", (req, res) => {
   const { title, description, done } = req.body;
   const TASK = new Task({ title, description, done });
