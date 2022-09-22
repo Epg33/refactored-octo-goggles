@@ -1,21 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const TASK = new mongoose.Schema({
-  title: String,
-  description: String,
-  done: Boolean
-})
+// const aTask = new task({
+//   title: "my first task",
+//   description: "this is my first task just to test this",
+//   done: true
+// })
 
-const task = mongoose.model('Task', TASK);
+mongoose.connect("mongodb://localhost:27017/test")
+  .then(() => console.log("Database coneccted"))
+  .catch((err) => console.log(err));
 
-const aTask = new task({
-  title: "my first task",
-  description: "this is my first task just to test this",
-  done: true
-})
-
-mongoose.connect('mongodb://localhost:27017/test')
-.then(res=>console.log('Database coneccted'))
-.then(()=>console.log(aTask))
-.catch(err=>console.log(err))
-
+module.exports=mongoose;
