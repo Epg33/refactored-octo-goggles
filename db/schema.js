@@ -16,4 +16,9 @@ const USER = new mongoose.Schema({
 
 const user = mongoose.model('User', USER);
 
-module.exports=task, user;
+const LOGED = mongoose.Schema({
+  
+})
+
+
+module.exports={task, user};
