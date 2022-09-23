@@ -10,7 +10,8 @@ app.use(express.json());
 
 const PORT = 4000
  
-app.use("/task", require('./routes/task.route'))
+app.use("/task", require('./routes/task.route'));
+app.use("/register", require('./routes/user.route'));
 
 app.listen(PORT, ()=>{
   console.log(`Server running on port ${PORT}`);
