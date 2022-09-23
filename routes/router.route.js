@@ -37,7 +37,9 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete('/:id', async (req, res)=>{
-
+  await Task.findByIdAndDelete(req.params.id);
+  res.send({status: "ok"})
+  console.log('oh shit bro')
 });
 
 module.exports = router;
