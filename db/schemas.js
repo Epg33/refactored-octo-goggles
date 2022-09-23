@@ -8,4 +8,12 @@ const TASK = new mongoose.Schema({
 
 const task = mongoose.model('Task', TASK);
 
-module.exports=task;
+const USER = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String
+})
+
+const user = mongoose.model('User', USER);
+
+module.exports=task, user;
