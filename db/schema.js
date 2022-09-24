@@ -1,22 +1,23 @@
-const mongoose = require('mongoose');
+const {Schema, model} = require('mongoose');
 
-const TASK = new mongoose.Schema({
+const TASK = new Schema({
+  user: {type: Schema.ObjectId, ref: 'USER'},
   title: String,
   description: String,
   done: Boolean
 })
 
-const task = mongoose.model('Task', TASK);
+const task = model('Task', TASK);
 
-const USER = new mongoose.Schema({
+const USER = new Schema({
   name: String,
   email: String,
   password: String
 })
 
-const user = mongoose.model('User', USER);
+const user = model('User', USER);
 
-const LOGED = mongoose.Schema({
+const LOGED = Schema({
   
 })
 
