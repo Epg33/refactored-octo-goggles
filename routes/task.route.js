@@ -20,8 +20,8 @@ router.post("/", async (req, res) => {
   const { title, description, done } = req.body;
   const Task = new task({ title, description, done });
   await Task.save();
-    res.json({ status: "ok" });
-    // console.log("task saved");
+  res.json({ status: "ok" });
+  // console.log("task saved");
 });
 
 router.put("/:id", async (req, res) => {

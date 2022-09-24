@@ -1,18 +1,18 @@
 const {Schema, model} = require('mongoose');
 
 const TASK = new Schema({
-  user: {type: Schema.ObjectId, ref: 'USER'},
-  title: String,
-  description: String,
-  done: Boolean
+  user: {type: Schema.ObjectId, ref: 'USER', required: true},
+  title: {type:String, required:true},
+  description: {type:String, required:true},
+  done: {type:Boolean, required:true}
 })
 
 const task = model('Task', TASK);
 
 const USER = new Schema({
-  name: String,
-  email: String,
-  password: String
+  name: {type:String, required:true},
+  email: {type:String, required:true},
+  password: {type:String, required:true}
 })
 
 const user = model('User', USER);
