@@ -12,12 +12,19 @@ router.post("/", async (req, res) => {
   const { name, email, password } = req.body;
   const userDone = await user.findOne({ email: email });
   const USER = new user({ name, email, password });
-  if (userDone) {
-    res.send({ message: "alredy existing user" });
-  } else {
-    await USER.save();
-    res.send({ message: "usuario registrado" });
+  try{
+    if (userDone) {
+      res.send({ message: "alredy existing user" });
+    } else {
+      await USER.save();
+      res.send({ message: "usuario registrado" });
+    }
   }
-});
+  catch(err){
+    res.send({error: err})
+    console.log(err);
+  }
+  
+})
 
 module.exports = router;
