@@ -27,4 +27,12 @@ router.post("/", async (req, res) => {
   
 })
 
+router.put('/:id', async (req, res)=>{
+  const {name, email, password} = req.body;
+  const USER = {name, email, password};
+  await user.findByIdAndUpdate(req.params.id, USER);
+  console.log('User updated succesfully');
+  res.send({message: 'ok'})
+})
+
 module.exports = router;
