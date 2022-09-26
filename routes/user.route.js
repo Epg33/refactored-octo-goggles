@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const joi = require('joi')
+const joi = require("joi");
 
 const { user } = require("../db/schema");
 
@@ -12,14 +12,14 @@ router.get("/", async (req, res) => {
 const validateRegister = joi.object({
   name: joi.string().min(3).required(),
   email: joi.string().email().required(),
-  password: joi.string().min(3).required()
-})
+  password: joi.string().min(3).required(),
+});
 
 router.post("/", async (req, res) => {
-  const {error, value } = validateRegister.validate(req.body);
-  if(error){
+  const { error, value } = validateRegister.validate(req.body);
+  if (error) {
     console.log(error);
-    res.send(error)
+    res.send(error);
   }
   const { name, email, password } = value;
   const userDone = await user.findOne({ email: email });
