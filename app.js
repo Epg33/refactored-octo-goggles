@@ -11,6 +11,7 @@ const PORT = process.env.PORT;
  
 app.use("/task", require('./routes/task.route'));
 app.use("/register", require('./routes/user.route'));
+app.use("/login", require('./routes/login.route'));
 
 app.listen(PORT, ()=>{
   console.log(`Server running on port ${PORT}`);
