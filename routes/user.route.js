@@ -1,7 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const joi = require('joi')
 
 const { user } = require("../db/schema");
+
+const validateRegister = joi.object({
+  name: joi.string().min(3).required(),
+  email: joi.string().email().required(),
+  password: joi.string().min(3).required()
+})
 
 router.get("/", async (req, res) => {
   const users = await user.find();
@@ -9,7 +16,12 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { name, email, password } = req.body;
+  const {error, value } = validateRegister.validate(req.body);
+  if(error){
+    console.log(error);
+    res.send(error)
+  }
+  const { name, email, password } = value;
   const userDone = await user.findOne({ email: email });
   const USER = new user({ name, email, password });
   try {
