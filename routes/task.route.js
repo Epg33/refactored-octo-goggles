@@ -9,9 +9,9 @@ router.get("/:userid", async (req, res) => {
   // console.log("tareas");
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:userid/:id", async (req, res) => {
   const id = req.params.id;
-  const homeWork = await task.findById(id);
+  const homeWork = await task.findOne({user: req.params.userid, id:id});
   res.send(homeWork);
   // console.log("la tarea");
 });
