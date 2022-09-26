@@ -4,16 +4,16 @@ const joi = require('joi')
 
 const { user } = require("../db/schema");
 
+router.get("/", async (req, res) => {
+  const users = await user.find();
+  res.send(users);
+});
+
 const validateRegister = joi.object({
   name: joi.string().min(3).required(),
   email: joi.string().email().required(),
   password: joi.string().min(3).required()
 })
-
-router.get("/", async (req, res) => {
-  const users = await user.find();
-  res.send(users);
-});
 
 router.post("/", async (req, res) => {
   const {error, value } = validateRegister.validate(req.body);
