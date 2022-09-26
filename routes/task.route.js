@@ -3,8 +3,8 @@ const router = express.Router();
 
 const {task} = require("../db/schema");
 
-router.get("/", async (req, res) => {
-  const homeWork = await task.find();
+router.get("/:userid", async (req, res) => {
+  const homeWork = await task.find({user: req.params.userid});
   res.send(homeWork);
   // console.log("tareas");
 });
@@ -16,9 +16,10 @@ router.get("/:id", async (req, res) => {
   // console.log("la tarea");
 });
 
-router.post("/", async (req, res) => {
+router.post("/:userid", async (req, res) => {
   const { title, description, done } = req.body;
-  const Task = new task({ title, description, done });
+  const user = req.params.userid;
+  const Task = new task({ user, title, description, done });
   await Task.save();
   res.json({ status: "ok" });
   // console.log("task saved");
