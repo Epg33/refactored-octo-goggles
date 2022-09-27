@@ -3,6 +3,7 @@ import Home from './components/Home/index'
 import Register from './components/Register/index'
 import Login from './components/Login/index'
 import ViewTasks from './components/Tasks/ViewTasks'
+import Error404 from './components/Error404'
 import {useState} from 'react'
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
           <Route path='/register' element={<Register />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/account/tasks' element={<ViewTasks />}></Route>
-          <Route ></Route>
+          <Route path='*' element={<Error404 />}></Route>
           <Route ></Route>
           <Route ></Route>
           <Route ></Route>
