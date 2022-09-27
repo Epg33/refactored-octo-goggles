@@ -4,7 +4,6 @@ import Register from './components/Register/index'
 import Login from './components/Login/index'
 import ViewTasks from './components/Tasks/ViewTasks'
 import Error404 from './components/Error404'
-import {useState} from 'react'
 
 function App() {
   return (
