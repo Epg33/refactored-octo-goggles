@@ -1,4 +1,5 @@
 //importando librerias
+const jwt = require('jsonwebtoken');
 const express = require("express");
 const router = express.Router();
 const joi = require("joi");
@@ -33,7 +34,13 @@ router.post("/", async (req, res) => {
       validatedUser.password
     );
     if (comparedPassword) {
-      res.send({ message: "user logged succesfully" });
+      const tokenUser ={
+        id: validatedUser.id,
+        email: validatedUser.email
+      }
+      const token = jwt.sign(tokenUser, process.env.SECRET)
+      console.log(tokenUser);
+      res.send({ message: "user logged succesfully", token: token });
     } else {
       res.send({ message: "wrong password" });
     }
