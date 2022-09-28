@@ -1,4 +1,5 @@
 //importando express
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const router = express.Router();
 
@@ -7,9 +8,21 @@ const { task } = require("../db/schema");
 
 //consultando todasd las tareas del usuario
 router.get("/:userid", async (req, res) => {
-  //traer las tareas
+  try{
+  const token= jwt.verify(req.body.token, process.env.SECRET)
+  if(token){
+      //traer las tareas
   const homeWork = await task.find({ user: req.params.userid });
   res.send(homeWork);
+  }
+  else{
+    res.send({message: "invalid token"})
+  }
+  }
+  catch(err){
+    res.send(err)
+    console.log(err);
+  }
 });
 
 //consultando una tarea especifica del usuario
@@ -34,10 +47,20 @@ router.post("/:userid", async (req, res) => {
   const user = req.params.userid;
   //creando la nueva tarea
   const Task = new task({ user, title, description, done });
-  //guardando la tarea
-  await Task.save();
-  res.json({ status: "ok" });
-  // console.log("task saved");
+  try {
+    //verificando el token
+    const token = jwt.verify(req.body.token, process.env.SECRET);
+    if (token) {
+      //guardando la tarea
+      await Task.save();
+      res.send({ status: "ok" });
+      // console.log("task saved");
+    } else {
+      res.send({ message: "invalid token" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //actualizacion una tarea
@@ -62,3 +85,6 @@ router.delete("/:userid/:id", async (req, res) => {
 });
 
 module.exports = router;
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzM1ZThkNjFkMWRiODU0Y2U0ODllOCIsImVtYWlsIjoiYWxlQGdtYWlsLmNvbSIsImlhdCI6MTY2NDM5ODU0MH0.CgRKPDTwDMXwc46CmakbrW5kVAdcLSc5-Ga-XLhq0e0
+//
