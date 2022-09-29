@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import Nav from "../Nav";
 
 function index() {
   return (
-    <div>index</div>
-  )
+    <>
+      <Nav />
+      <h1>Log in</h1>
+    </>
+  );
 }
 
-export default index
+export default index;

@@ -1,8 +1,11 @@
 import React from 'react'
+import Nav from '../Nav'
 
 function index() {
   return (
-    <div>index</div>
+    <>
+      <Nav />
+    </>
   )
 }
 
