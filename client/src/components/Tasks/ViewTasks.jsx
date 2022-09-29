@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../styles/tasks/viewTasks.css'
 
 function ViewTasks() {
   return (
