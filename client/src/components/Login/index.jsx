@@ -1,12 +1,19 @@
 import React from "react";
 import Nav from "../Nav";
-import '../../styles/login/login.css'
+import "../../styles/login/login.css";
 
 function index() {
   return (
     <>
       <Nav />
-      <h1>Log in</h1>
+      <div>
+        <form>
+          <h2>Log in</h2>
+          <input type="email" required />
+          <input type="password" required />
+          <input type="submit" />
+        </form>
+      </div>
     </>
   );
 }
