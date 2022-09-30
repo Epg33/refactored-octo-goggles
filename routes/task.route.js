@@ -24,13 +24,13 @@ router.get("/:userid", async (req, res) => {
 });
 
 //consultando una tarea especifica del usuario
-router.get("/:userid/:id", async (req, res) => {
+router.get("/user/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const token = jwt.verify(req.body.token, process.env.SECRET);
     if (token) {
       //traer la tarea especifica
-      const homeWork = await task.findOne({ user: req.params.userid, id: id });
+      const homeWork = await task.findById(id);
       //comprobando si existe la tarea
       if (homeWork) {
         res.send(homeWork);
