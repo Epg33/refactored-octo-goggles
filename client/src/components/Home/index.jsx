@@ -2,7 +2,7 @@ import React from 'react'
 import Nav from '../Nav'
 import '../../styles/home/home.css'
 
-function index() {
+function Index() {
   return (
     <>
       <Nav />
@@ -10,4 +10,4 @@ function index() {
   )
 }
 
-export default index
+export default Index

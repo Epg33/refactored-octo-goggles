@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './components/Home/index'
-import Register from './components/Register/index'
-import Login from './components/Login/index'
+import Home from './components/Home/Index'
+import Register from './components/Register/Index'
+import Login from './components/Login/Index'
 import ViewTasks from './components/Tasks/ViewTasks'
 import Error404 from './components/Error404'
 
