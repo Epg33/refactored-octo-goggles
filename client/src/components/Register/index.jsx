@@ -23,7 +23,16 @@ function Index() {
     } else {
       requestRegisterUser();
     }
-    
+  }
+
+  const validateUserExist = (res) =>{
+    if(res.response.status == 409){
+      alert('usuario ya existe')
+    }
+  }
+
+  const validatedRegister =()=>{
+    alert('usuario registrado')
   }
 
   const requestRegisterUser = () =>{
@@ -32,7 +41,8 @@ function Index() {
       email: email.current.value,
       password: password.current.value
     })
-    .then(res =>console.log(res))
+    .then(res =>validatedRegister())
+    .catch(err =>validateUserExist(err))
   }
 
   return (

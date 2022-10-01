@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
   try {
     //si ya existe
     if (userDone) {
-      res.send({ message: "alredy existing user" });
+      res.status(409).send({ message: "alredy existing user" });
     } else {
       //sino exixste
       //se encripta la contraseña
