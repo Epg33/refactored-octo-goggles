@@ -4,6 +4,7 @@ import axios from 'axios'
 import "../../styles/register/register.css";
 
 function Index() {
+  const regEx = new RegExp("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")
   const name = useRef();
   const email = useRef();
   const password = useRef();
@@ -14,6 +15,9 @@ function Index() {
     if ($(name).length < 3) {
       alert("Nombre no debe ser menor a 3 caracteres");
     } 
+    else if(!regEx.test(email.current.value)){
+      alert('ingrese un correo valido')
+    }
      else if ($(password).length < 6) {
       alert("Password no debe ser menor a 6 caracteres");
     } else {
