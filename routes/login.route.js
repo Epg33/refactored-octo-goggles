@@ -42,12 +42,12 @@ router.post("/", async (req, res) => {
       console.log(tokenUser);
       res.send({ message: "user logged succesfully", token: token });
     } else {
-      res.send({ message: "wrong password" });
+      res.status(409).send({ message: "wrong password" });
     }
   }
   //si el usuario no existe
   else {
-    res.send({ message: "user does not exist" });
+    res.status(410).send({ message: "user does not exist" });
   }
 });
 

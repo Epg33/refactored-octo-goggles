@@ -18,12 +18,22 @@ function Index() {
     }
   }
 
+  const handleLoginResposeErr = (res) =>{
+    if(res.response.status==409){
+        alert('contraseña insorrecta')
+    } else if(res.response.status==410){
+        alert('ingrese un usuario valido')
+    }
+  }
+
   const handleRequestOfLogin = () => {
     axios.post('http://localhost:4000/login', {
       email: email.current.value,
       password: password.current.value
     })
-    .then(res =>console.log(res))
+    .then(res =>
+      handleLoginRespose(res))
+    .catch(err=>handleLoginResposeErr(err))
   }
 
   return (
