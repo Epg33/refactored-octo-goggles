@@ -1,12 +1,14 @@
 import React, {useRef} from "react";
 import Nav from "../Nav";
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 import "../../styles/login/login.css";
 
 function Index() {
   const regEx = new RegExp("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")
   const email = useRef();
   const password = useRef();
+  const navigate = useNavigate();
 
   const validateLogin = (e) => {
     e.preventDefault();
@@ -19,11 +21,19 @@ function Index() {
   }
 
   const handleLoginResposeErr = (res) =>{
-    if(res.response.status==409){
+    if(res.response.status===409){
         alert('contraseña insorrecta')
-    } else if(res.response.status==410){
+    } else if(res.response.status===410){
         alert('ingrese un usuario valido')
     }
+  }
+
+  const handleLoginRespose = () =>{
+    alert('usuario logueado exitosamente');
+    window.setTimeout(() => {
+      navigate("/account/tasks", { replace: true });
+      window.clearTimeout();
+    }, 2000)
   }
 
   const handleRequestOfLogin = () => {
@@ -32,7 +42,7 @@ function Index() {
       password: password.current.value
     })
     .then(res =>
-      handleLoginRespose(res))
+      handleLoginRespose())
     .catch(err=>handleLoginResposeErr(err))
   }
 
