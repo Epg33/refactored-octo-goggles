@@ -13,6 +13,17 @@ function Index() {
     if(!regEx.test(email.current.value)){
       alert("ingrese un correo valido")
     }
+    else {
+      handleRequestOfLogin()
+    }
+  }
+
+  const handleRequestOfLogin = () => {
+    axios.post('http://localhost:4000/login', {
+      email: email.current.value,
+      password: password.current.value
+    })
+    .then(res =>console.log(res))
   }
 
   return (
