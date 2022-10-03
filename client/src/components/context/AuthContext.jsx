@@ -1,7 +1,14 @@
 import { createContext, useState } from "react";
 
-export default AuthContext = createContext();
+export const AuthContext = createContext();
 
-export function AuthContextProvider({children}){
-  const [isLogged, setIsLogged] = useState(window.localStorage.getItem("TheActualTokenForAuthInThisSpecificApp"));
+export const AuthContextProvider =({children})=>{
+  const [isLogged, setIsLogged] = useState(false);
+  return(
+    <AuthContext.Provider value={{isLogged, setIsLogged}}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
+
+export default AuthContextProvider;

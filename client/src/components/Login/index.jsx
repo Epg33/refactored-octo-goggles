@@ -1,5 +1,6 @@
-import React, {useRef} from "react";
+import React, {useRef, useContext} from "react";
 import Nav from "../Nav";
+import {AuthContext,AuthContextProvider} from '../context/AuthContext'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import "../../styles/login/login.css";
@@ -9,6 +10,7 @@ function Index() {
   const email = useRef();
   const password = useRef();
   const navigate = useNavigate();
+  const {setIsLogged} = useContext(AuthContext)
 
   const validateLogin = (e) => {
     e.preventDefault();
@@ -41,8 +43,12 @@ function Index() {
       email: email.current.value,
       password: password.current.value
     })
-    .then(res =>
-      handleLoginRespose())
+    .then(res =>{
+      console.log(res)
+      window.localStorage.setItem('AuthTokenForLoginInThisSpecificApp', res.data.token)
+      console.log(window.localStorage.getItem('AuthTokenForLoginInThisSpecificApp'))
+      handleLoginRespose()
+    })
     .catch(err=>handleLoginResposeErr(err))
   }
 
