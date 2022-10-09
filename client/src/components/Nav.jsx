@@ -4,10 +4,12 @@ import '../styles/nav.css'
 
 function Nav() {
   return (
-    <nav>
-      <NavLink to='/'>Home</NavLink>
-      <NavLink to='/register'>Registro</NavLink>
-      <NavLink to='/login'>Log in</NavLink>
+    <nav className='nav'>
+      <div className='links-container'>
+        <NavLink className='nav-link' to='/'>Home</NavLink>
+        <NavLink className='nav-link' to='/register'>Registro</NavLink>
+        <NavLink className='nav-link' to='/login'>Log in</NavLink>
+      </div>
     </nav>
   )
 }
