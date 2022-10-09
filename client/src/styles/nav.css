@@ -77,8 +77,10 @@
     width: 60%;
     margin: 5px auto;
     height: 2px;
+    animation: 1s forwards;
   }
 
+  /*animaciones */
   .burguer button .top-line {
     animation: top-line-animation;
   }
@@ -101,5 +103,12 @@
 
   .burguer button .bottom-line {
     animation: bottom-line-close;
+  }
+
+  @keyframes top-line-animation {
+    50%, 100%{
+      margin: 0 auto;
+      transform: translateY(2px) rotate(-45deg);
+    }
   }
 }
