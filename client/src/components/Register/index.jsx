@@ -53,11 +53,11 @@ function Index() {
         <form>
           <h2>Registro</h2>
           <div>
-            <label htmlfor="">Nombre: </label>
+            <label htmlFor="">Nombre: </label>
             <input type="text" minLength={3} required ref={name} />
-            <label htmlfor="">Email: </label>
+            <label htmlFor="">Email: </label>
             <input type="email" required ref={email} />
-            <label htmlfor="">Contraseña: </label>
+            <label htmlFor="">Contraseña: </label>
             <input type="password" minLength={6} required ref={password} />
             <input type="submit" onClick={handleSubmit} />
           </div>
