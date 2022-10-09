@@ -25,13 +25,13 @@
   text-align: center;
 }
 
-.nav-link{
+.nav-link {
   text-decoration: none;
   color: white;
   position: relative;
 }
 
-.nav-link::after{
+.nav-link::after {
   content: '';
   width: 100%;
   height: 1px;
@@ -46,7 +46,60 @@
   transition: transform 1s ease;
 }
 
-.nav-link:hover::after{
+.nav-link:hover::after {
   transform: scaleX(1);
 }
 
+@media screen and (max-width: 550px) {
+  .nav {
+    width: 100%;
+    background-color: #111;
+  }
+
+  .burger-container {
+    width: 200px;
+    margin: 100px auto;
+  }
+
+  .burguer button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+  }
+
+  .burguer button span {
+    border-radius: 5px;
+    background-color: #eee;
+    display: block;
+    width: 60%;
+    margin: 5px auto;
+    height: 2px;
+  }
+
+  .burguer button .top-line {
+    animation: top-line-animation;
+  }
+
+  .burguer button .mid-line {
+    animation: mid-line-animation;
+  }
+
+  .burguer button .bottom-line {
+    animation: bottom-line-animation;
+  }
+
+  .burguer button .top-line {
+    animation: top-line-close;
+  }
+
+  .burguer button .mid-line {
+    animation: mid-line-close;
+  }
+
+  .burguer button .bottom-line {
+    animation: bottom-line-close;
+  }
+}
