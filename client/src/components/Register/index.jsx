@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import {MdDriveFileRenameOutline} from 'react-icons/md'
+import {MdDriveFileRenameOutline, MdEmail, MdLock} from 'react-icons/md'
 import Nav from "../Nav";
 import axios from "axios";
 import "../../styles/register/register.css";
@@ -54,11 +54,11 @@ function Index() {
         <form>
           <h2>Registro</h2>
           <div>
-            <label htmlFor="register-name">Nombre: <MdDriveFileRenameOutline /> </label>
+            <label htmlFor="register-name"><MdDriveFileRenameOutline /> Nombre: </label>
             <input type="text" id="register-name" className="register-name" minLength={3} required ref={name} />
-            <label htmlFor="register-email">Email: </label>
+            <label htmlFor="register-email"><MdEmail /> Email: </label>
             <input type="email" id="register-email" className="register-email" required ref={email} />
-            <label htmlFor="register-pass">Contraseña: </label>
+            <label htmlFor="register-pass"><MdLock /> Contraseña: </label>
             <input type="password" id="reigster-pass" className="reigster-pass" minLength={6} required ref={password} />
             <input type="submit" onClick={handleSubmit} />
           </div>
