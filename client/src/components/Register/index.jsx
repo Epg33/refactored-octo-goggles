@@ -50,10 +50,10 @@ function Index() {
   return (
     <>
       <Nav />
-      <div>
-        <form>
-          <h2>Registro</h2>
-          <div>
+      <div className="register-body">
+        <form className="register-form">
+          <h2 className="register-title">Registro</h2>
+          <div className="register-inputs-container">
             <label htmlFor="register-name"><MdDriveFileRenameOutline /> Nombre: </label>
             <input type="text" id="register-name" className="register-name" minLength={3} required ref={name} />
             <label htmlFor="register-email"><MdEmail /> Email: </label>
