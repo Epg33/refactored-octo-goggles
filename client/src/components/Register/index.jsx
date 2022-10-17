@@ -54,13 +54,19 @@ function Index() {
         <form className="register-form">
           <h2 className="register-title">Registro</h2>
           <div className="register-inputs-container">
-            <label htmlFor="register-name"><MdDriveFileRenameOutline /> Nombre: </label>
-            <input type="text" id="register-name" className="register-name" minLength={3} required ref={name} />
-            <label htmlFor="register-email"><MdEmail /> Email: </label>
-            <input type="email" id="register-email" className="register-email" required ref={email} />
-            <label htmlFor="register-pass"><MdLock /> Contraseña: </label>
-            <input type="password" id="reigster-pass" className="reigster-pass" minLength={6} required ref={password} />
-            <input type="submit" onClick={handleSubmit} />
+            <label htmlFor="register-name" className="register-label">
+              <MdDriveFileRenameOutline className="register-icon"/> 
+              <input type="text" id="register-name" placeholder="Nombre:" className="register-input" minLength={3} required ref={name} />
+            </label>
+            <label htmlFor="register-email" className="register-label">
+              <MdEmail className="register-icon"/>  
+              <input type="email" id="register-email" placeholder="Email:" className="register-input" required ref={email} />
+            </label>
+            <label htmlFor="register-pass" className="register-label">
+              <MdLock className="register-icon"/> 
+              <input type="password" id="reigster-pass" placeholder="Contraseña:" className="register-input" minLength={6} required ref={password} />
+            </label>
+            <input type="submit" value='Registro' className="register-submit" onClick={handleSubmit} />
           </div>
         </form>
       </div>
