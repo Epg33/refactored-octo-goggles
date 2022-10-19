@@ -93,58 +93,57 @@
 }
 
 @media screen and (max-width: 1080px){
-  .register-form{
+  .register-form {
     width: 40%;
     height: 65%;
     border-radius: 15%;
   }
-  .register-label{
+  .register-label {
     justify-content: flex-start;
     gap: 2%;
   }
   .register-title {
     font-size: 1.5rem;
   }
-  .register-submit{
+  .register-submit {
     width: 50%;
   }
 }
 
 @media screen and (max-width: 720px) {
-  .register-form{
+  .register-form {
     width: 50%;
     height: 75%;
     border-radius: 15%;
   }
-  .register-label{
+  .register-label {
     justify-content: flex-start;
     gap: 4%;
   }
   .register-title {
     font-size: 1.5rem;
   }
-  .register-submit{
+  .register-submit {
     width: 50%;
     margin-bottom: -10%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .register-form{
+  .register-form {
     width: 70%;
     height: 85%;
     border-radius: 10%;
   }
-  .register-label{
+  .register-label {
     justify-content: flex-start;
     gap: 4%;
   }
   .register-title {
     font-size: 1.8rem;
   }
-  .register-submit{
+  .register-submit {
     width: 50%;
     margin-bottom: -15%;
   }
 }
-
