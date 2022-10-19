@@ -128,3 +128,23 @@
     margin-bottom: -10%;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .register-form{
+    width: 70%;
+    height: 85%;
+    border-radius: 10%;
+  }
+  .register-label{
+    justify-content: flex-start;
+    gap: 4%;
+  }
+  .register-title {
+    font-size: 1.8rem;
+  }
+  .register-submit{
+    width: 50%;
+    margin-bottom: -15%;
+  }
+}
+
