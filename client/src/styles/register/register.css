@@ -72,8 +72,22 @@
   height: 12%;
   display: grid;
   place-content: center;
-  background-color: #222;
+  cursor: pointer;
+  background-color: transparent;
   color: #eee;
   border: none;
   border-radius: 8px;
+  transition: all 1s ease;
+  box-shadow: .5rem .5rem 1rem rgba(87, 37, 113, 1),
+    -.5rem -.5rem 1rem rgba(177, 3, 56, 1);
+}
+
+.register-submit:hover {
+  box-shadow: .5rem .5rem 1rem rgba(177, 3, 56, 1),
+    -.5rem -.5rem 1rem rgba(87, 37, 113, 1);
+}
+
+.register-submit:active {
+  box-shadow: inset .5rem .5rem 1rem rgba(177, 3, 56, 1),
+    inset -.5rem -.5rem 1rem rgba(87, 37, 113, 1);
 }
