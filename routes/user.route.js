@@ -62,4 +62,18 @@ router.put("/:id", async (req, res) => {
   res.send({ message: "ok" });
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const accountToDelete = await user.findById(req.params.id);
+    if (accountToDelete) {
+      await user.findByIdAndDelete(req.params.id);
+      res.send({ message: "account deleted succesfully" });
+    } else {
+      res.send({ message: "No existe esta cuenta" });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;
