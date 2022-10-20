@@ -50,3 +50,15 @@
   transform: scaleX(1);
 }
 
+
+@media screen and (max-width: 582px){
+  .links-container{
+    width: 45%;
+  }  
+}
+
+@media screen and (max-width:415px) {
+  .links-container{
+    width: 55%;
+  }
+}
