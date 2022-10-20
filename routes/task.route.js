@@ -8,19 +8,20 @@ const { task } = require("../db/schema");
 
 //consultando todasd las tareas del usuario
 router.get("/:userid", async (req, res) => {
-  try {
-    const token = jwt.verify(req.body.token, process.env.SECRET);
-    if (token) {
-      //traer las tareas
-      const homeWork = await task.find({ user: req.params.userid });
-      res.send(homeWork);
-    } else {
-      res.send({ message: "invalid token" });
-    }
-  } catch (err) {
-    res.send(err);
-    console.log(err);
-  }
+  console.log(req.body);
+  // try {
+  //   const token = jwt.verify(req.body.token, process.env.SECRET);
+  //   if (token) {
+  //     //traer las tareas
+  //     const homeWork = await task.find({ user: req.params.userid });
+  //     res.send(homeWork);
+  //   } else {
+  //     res.send({ message: "invalid token" });
+  //   }
+  // } catch (err) {
+  //   res.status(409).send(err);
+  //   console.log(err);
+  // }
 });
 
 //consultando una tarea especifica del usuario
