@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/account/tasks" element={isLogged?<ViewTasks />: <Navigate to='/' />}></Route>
+            <Route path="/account/tasks" element={/*isLogged? */ <ViewTasks /> /* <Navigate to='/' />*/}></Route>
             <Route path="*" element={<Error404 />}></Route>
             <Route></Route>
             <Route></Route>
