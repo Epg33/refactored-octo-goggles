@@ -78,13 +78,13 @@
   border: none;
   border-radius: 8px;
   transition: all 1s ease;
-  box-shadow: .5rem .5rem 1rem rgba(87, 37, 113, 1),
-    -.5rem -.5rem 1rem rgba(177, 3, 56, 1);
+  box-shadow: .5rem .5rem 1rem rgba(177, 3, 56, 1),
+    -.5rem -.5rem 1rem rgba(87, 37, 113, 1);
 }
 
 .register-submit:hover {
-  box-shadow: .5rem .5rem 1rem rgba(177, 3, 56, 1),
-    -.5rem -.5rem 1rem rgba(87, 37, 113, 1);
+  box-shadow: .5rem .5rem 1rem rgba(87, 37, 113, 1),
+    -.5rem -.5rem 1rem rgba(177, 3, 56, 1);
 }
 
 .register-submit:active {
@@ -92,19 +92,22 @@
     inset -.5rem -.5rem 1rem rgba(87, 37, 113, 1);
 }
 
-@media screen and (max-width: 1080px){
+@media screen and (max-width: 1080px) {
   .register-form {
     width: 40%;
     height: 65%;
     border-radius: 15%;
   }
+
   .register-label {
     justify-content: flex-start;
     gap: 2%;
   }
+
   .register-title {
     font-size: 1.5rem;
   }
+
   .register-submit {
     width: 50%;
   }
@@ -116,13 +119,16 @@
     height: 75%;
     border-radius: 15%;
   }
+
   .register-label {
     justify-content: flex-start;
     gap: 4%;
   }
+
   .register-title {
     font-size: 1.5rem;
   }
+
   .register-submit {
     width: 50%;
     margin-bottom: -10%;
@@ -135,13 +141,16 @@
     height: 85%;
     border-radius: 10%;
   }
+
   .register-label {
     justify-content: flex-start;
     gap: 4%;
   }
+
   .register-title {
     font-size: 1.8rem;
   }
+
   .register-submit {
     width: 50%;
     margin-bottom: -15%;

@@ -1,6 +1,7 @@
 import React, {useRef, useContext} from "react";
+import {MdEmail, MdLock} from 'react-icons/md'
 import Nav from "../Nav";
-import {AuthContext,AuthContextProvider} from '../context/AuthContext'
+// import {AuthContext,AuthContextProvider} from '../context/AuthContext'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import "../../styles/login/login.css";
@@ -10,7 +11,7 @@ function Index() {
   const email = useRef();
   const password = useRef();
   const navigate = useNavigate();
-  const {setIsLogged} = useContext(AuthContext)
+  // const {setIsLogged} = useContext(AuthContext)
 
   const validateLogin = (e) => {
     e.preventDefault();
@@ -55,12 +56,18 @@ function Index() {
   return (
     <>
       <Nav />
-      <div>
-        <form>
-          <h2>Log in</h2>
-          <input type="email" required ref={email} />
-          <input type="password" required ref={password}/>
-          <input type="submit" onClick={validateLogin}/>
+      <div className='login-body'>
+        <form className='login-form'>
+          <h2 className='login-title'>Log in</h2>
+          <label>
+            <MdEmail className="login-icon" />
+            <input type="email" className='login-input' placeholder="Correo: " required ref={email} />
+          </label>
+          <label>
+            <MdLock className="login-icon" />
+            <input type="password" className='login-input' placeholder="Contraseña: " required ref={password}/>
+          </label>
+          <input type="submit" className='login-submit' onClick={validateLogin}/>
         </form>
       </div>
     </>
