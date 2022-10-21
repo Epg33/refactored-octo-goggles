@@ -7,17 +7,22 @@ function ViewTasks() {
   const [tasks, setTasks] = useState(<></>)
   const token = localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
   let userid = '6351c3bb0ea8b08c9456cb88';
+
+  const showTask = (taskprop) =>{
+    console.log(taskprop.data);
+    setTasks(taskprop.data.map(obj =>{
+      return <div key={obj._id}>
+        <h3>{obj.title}</h3>
+      </div>
+
+    }))
+  }
+
   useEffect(()=>{
     axios.get(`http://localhost:4000/task/${userid}`,{
         "token": token
     })
-      .then(res=>console.log(res))
-      
-    // axios({
-    //     method: 'get',
-    //     url: `http://localhost:4000/task/${userid}`,
-    //     data: {"token": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzM1ZThkNjFkMWRiODU0Y2U0ODllOCIsImVtYWlsIjoiYWxlQGdtYWlsLmNvbSIsImlhdCI6MTY2NDM5ODU0MH0.CgRKPDTwDMXwc46CmakbrW5kVAdcLSc5-Ga-XLhq0e0'}
-    // })
+      .then(res=>showTask(res))
   }, [])
   return( 
     <>
