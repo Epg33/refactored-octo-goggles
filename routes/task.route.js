@@ -8,16 +8,9 @@ const { task } = require("../db/schema");
 
 //consultando todasd las tareas del usuario
 router.get("/:userid", async (req, res) => {
-  console.log(req.body);
   try {
-    const token = jwt.verify(req.body.token, process.env.SECRET);
-    if (token) {
-      //traer las tareas
-      const homeWork = await task.find({ user: req.params.userid });
-      res.send(homeWork);
-    } else {
-      res.send({ message: "invalid token" });
-    }
+    const homeWork = await task.find({ user: req.params.userid });
+    res.send(homeWork);
   } catch (err) {
     res.status(409).send(err);
     console.log(err);
@@ -28,20 +21,15 @@ router.get("/:userid", async (req, res) => {
 router.get("/user/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const token = jwt.verify(req.body.token, process.env.SECRET);
-    if (token) {
-      //traer la tarea especifica
-      const homeWork = await task.findById(id);
-      //comprobando si existe la tarea
-      if (homeWork) {
-        res.send(homeWork);
-      } else {
-        res.send({ message: "task does not exist" });
-      }
-      // console.log("la tarea");
+    //traer la tarea especifica
+    const homeWork = await task.findById(id);
+    //comprobando si existe la tarea
+    if (homeWork) {
+      res.send(homeWork);
     } else {
-      res.send({ message: "invalid token" });
+      res.send({ message: "task does not exist" });
     }
+    // console.log("la tarea");
   } catch (err) {
     console.log(err);
   }
@@ -57,15 +45,11 @@ router.post("/:userid", async (req, res) => {
   const Task = new task({ user, title, description, done });
   try {
     //verificando el token
-    const token = jwt.verify(req.body.token, process.env.SECRET);
-    if (token) {
-      //guardando la tarea
-      await Task.save();
-      res.send({ status: "ok" });
-      // console.log("task saved");
-    } else {
-      res.send({ message: "invalid token" });
-    }
+
+    //guardando la tarea
+    await Task.save();
+    res.send({ status: "ok" });
+    // console.log("task saved");
   } catch (err) {
     console.log(err);
   }
@@ -78,15 +62,10 @@ router.put("/:userid/:id", async (req, res) => {
   const TASK = { title, description, done };
   const user = req.params.userid;
   try {
-    const token = jwt.verify(req.body.token, process.env.SECRET);
-    if (token) {
-      //encontrar la tarea especifica y actualizarla
-      await task.findOneAndUpdate({ user: user, id: req.params.id }, TASK);
-      console.log("todo bien");
-      res.send({ status: "ok" });
-    } else {
-      res.send({ message: "invalid token" });
-    }
+    //encontrar la tarea especifica y actualizarla
+    await task.findOneAndUpdate({ user: user, id: req.params.id }, TASK);
+    console.log("todo bien");
+    res.send({ status: "ok" });
   } catch (err) {
     console.log(err);
   }
@@ -96,15 +75,10 @@ router.put("/:userid/:id", async (req, res) => {
 router.delete("/:userid/:id", async (req, res) => {
   const user = req.params.userid;
   try {
-    const token = jwt.verify(req.body.token, process.env.SECRET);
-    if (token) {
-      //encontrando la tarea especifica y borrandola
-      await task.findOneAndDelete({ user: user, id: req.params.id });
-      res.send({ status: "ok" });
-      console.log("oh shit bro");
-    } else {
-      res.send({ message: "invalid token" });
-    }
+    //encontrando la tarea especifica y borrandola
+    await task.findOneAndDelete({ user: user, id: req.params.id });
+    res.send({ status: "ok" });
+    console.log("oh shit bro");
   } catch (err) {
     console.log(err);
   }
