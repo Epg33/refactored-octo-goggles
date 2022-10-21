@@ -13,6 +13,8 @@ function ViewTasks() {
     setTasks(taskprop.data.map(obj =>{
       return <div key={obj._id}>
         <h3>{obj.title}</h3>
+        <p>{obj.description}</p>
+        <p>{obj.done? 'hecha' : 'pendiente'}</p>
       </div>
 
     }))
