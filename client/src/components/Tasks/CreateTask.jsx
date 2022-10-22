@@ -3,29 +3,45 @@ import axios from "axios";
 import "../../styles/tasks/createTask.css";
 
 function CreateTask() {
+  const regEx = new RegExp('\.[^A-Za-z]*[a-z]')
+  const title = useRef()
+  const description = useRef()
   const done = useRef()
-  console.log(done);
+  const $ = (prop) => {return prop.current.value}
 
   const check = () => {
-    
-    console.log(done);
-
     if (done.checked){
-      done.checked =  false
+      done.checked = false
     }
     else {
       done.checked = true
     }
   }
+
+  const checkFormat = () => {
+    if($(title).length <6){
+      alert('El titulo debe tener al menos seis caracteres')
+    }
+    else if(!regEx.test($(title))){
+      alert('el titulo solo puede contener letras')
+    }
+    else {
+      createTask();
+    }
+  }
+
+  const createTask = () => {
+
+  }
   return (
     <>
       <div>
         <label>
-          <input type="text" />
+          <input type="text" ref={title} required/>
         </label>
-        <textarea></textarea>
+        <textarea ref={description} required></textarea>
         <input type="checkbox" ref={done} defaultChecked={false} onClick={check}/>
-        <button>Guardar</button>
+        <button onClick={checkFormat}>Guardar</button>
       </div>
     </>
   );
