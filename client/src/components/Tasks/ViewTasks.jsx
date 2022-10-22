@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Nav from "../Nav";
 import "../../styles/tasks/viewTasks.css";
+import CreateTask from "./CreateTask";
 
 function ViewTasks() {
   const [tasks, setTasks] = useState(<></>)
@@ -31,6 +32,7 @@ function ViewTasks() {
       <Nav />
       <main className="viewTasks-body">
         <h1>Tareas</h1>
+        <CreateTask />
         <section>
           {tasks}
         </section>

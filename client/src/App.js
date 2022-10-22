@@ -1,6 +1,6 @@
-import { useContext } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import {AuthContext, AuthContextProvider as Context} from "./components/context/AuthContext";
+// import { useContext } from "react";
+import { BrowserRouter, Routes, Route, /*Navigate*/ } from "react-router-dom";
+import {/*AuthContext*/ AuthContextProvider as Context} from "./components/context/AuthContext";
 import Home from "./components/Home/Index";
 import Register from "./components/Register/Index";
 import Login from "./components/Login/Index";
@@ -11,7 +11,7 @@ function App() {
   // const {isLogged} = useContext(AuthContext)
   // console.log(isLogged);
 
-  const isLogged = window.localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
+  // const isLogged = window.localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
   return (
     <>
       <BrowserRouter>

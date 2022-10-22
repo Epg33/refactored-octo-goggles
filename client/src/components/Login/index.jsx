@@ -24,7 +24,7 @@ function Index() {
 
   const handleLoginResposeErr = (res) => {
     if (res.response.status === 409) {
-      alert("contraseña insorrecta");
+      alert("contraseña incorrecta");
     } else if (res.response.status === 410) {
       alert("ingrese un usuario valido");
     }
