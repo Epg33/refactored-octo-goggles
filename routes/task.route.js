@@ -45,10 +45,16 @@ router.post("/:userid", async (req, res) => {
   const Task = new task({ user, title, description, done });
   try {
     //verificando el token
-
-    //guardando la tarea
-    await Task.save();
+    const token = jwt.verify(req.body.token, process.env.SECRET)
+    if(token){
+      await Task.save();
     res.send({ status: "ok" });
+    }
+    else{
+      res.send({message: 'invalid token'})
+    }
+    //guardando la tarea
+    
     // console.log("task saved");
   } catch (err) {
     console.log(err);

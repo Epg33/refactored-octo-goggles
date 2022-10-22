@@ -27,7 +27,7 @@ function Index() {
   };
 
   const validateUserExist = (res) => {
-    if (res.response.status == 409) {
+    if (res.response.status === 409) {
       alert("usuario ya existe");
     }
   };

@@ -31,7 +31,9 @@ function CreateTask() {
   }
 
   const createTask = () => {
-
+    axios.post('http://localhost:4000/task', {
+      
+    })
   }
   return (
     <>
