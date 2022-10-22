@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "../../styles/tasks/createTask.css";
 
-function CreateTask() {
-  const regEx = new RegExp('\.[^A-Za-z]*[a-z]')
+function CreateTask({taskDependency, setTaskDependency}) {
+  const regEx = new RegExp('[^A-Za-z]*[a-z]')
   const title = useRef()
   const description = useRef()
   const done = useRef()
@@ -31,9 +31,10 @@ function CreateTask() {
   }
 
   const createTask = () => {
-    axios.post('http://localhost:4000/task', {
+    // axios.post('http://localhost:4000/task', {
       
-    })
+    // })
+    setTaskDependency(taskDependency? false :true)
   }
   return (
     <>

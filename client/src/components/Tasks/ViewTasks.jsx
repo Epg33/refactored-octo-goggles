@@ -5,9 +5,10 @@ import "../../styles/tasks/viewTasks.css";
 import CreateTask from "./CreateTask";
 
 function ViewTasks() {
+  const [taskDependency, setTaskDependency] = useState();
   const [tasks, setTasks] = useState(<></>)
   const token = localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
-  let userid = '6351c3bb0ea8b08c9456cb88';
+  let userid = '6353f1a7aeab8208d6c1b8fe';
 
   const showTask = (taskprop) =>{
     console.log(taskprop.data);
@@ -15,7 +16,7 @@ function ViewTasks() {
       return <div key={obj._id}>
         <h3>{obj.title}</h3>
         <p>{obj.description}</p>
-        <p>{obj.done? 'hecha' : 'pendiente'}</p>
+        <p>{obj.done ? 'hecha' : 'pendiente'}</p>
       </div>
 
     }))
@@ -26,13 +27,14 @@ function ViewTasks() {
         "token": token
     })
       .then(res=>showTask(res))
-  }, [])
+  }, [taskDependency, token, userid])
+
   return( 
     <>
       <Nav />
       <main className="viewTasks-body">
         <h1>Tareas</h1>
-        <CreateTask />
+        <CreateTask setTaskDependency={setTaskDependency} taskDependency={taskDependency}/>
         <section>
           {tasks}
         </section>
