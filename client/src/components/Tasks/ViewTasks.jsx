@@ -34,7 +34,7 @@ function ViewTasks() {
       <Nav />
       <main className="viewTasks-body">
         <h1>Tareas</h1>
-        <CreateTask setTaskDependency={setTaskDependency} taskDependency={taskDependency}/>
+        <CreateTask userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency}/>
         <section>
           {tasks}
         </section>

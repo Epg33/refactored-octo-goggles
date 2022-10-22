@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "../../styles/tasks/createTask.css";
 
-function CreateTask({taskDependency, setTaskDependency}) {
+function CreateTask({userid, taskDependency, setTaskDependency}) {
   const regEx = new RegExp('[^A-Za-z]*[a-z]')
   const title = useRef()
   const description = useRef()
@@ -16,6 +16,7 @@ function CreateTask({taskDependency, setTaskDependency}) {
     else {
       done.checked = true
     }
+    checkFormat()
   }
 
   const checkFormat = () => {
@@ -31,9 +32,12 @@ function CreateTask({taskDependency, setTaskDependency}) {
   }
 
   const createTask = () => {
-    // axios.post('http://localhost:4000/task', {
-      
-    // })
+    axios.post(`http://localhost:4000/task/${userid}`, {
+      title: title.current.value,
+      description: description.current.value,
+      done: done.checked,
+      token: localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
+    })
     setTaskDependency(taskDependency? false :true)
   }
   return (
@@ -44,7 +48,7 @@ function CreateTask({taskDependency, setTaskDependency}) {
         </label>
         <textarea ref={description} required></textarea>
         <input type="checkbox" ref={done} defaultChecked={false} onClick={check}/>
-        <button onClick={checkFormat}>Guardar</button>
+        <button onClick={check}>Guardar</button>
       </div>
     </>
   );
