@@ -81,10 +81,19 @@ router.put("/:userid/:id", async (req, res) => {
 router.delete("/:userid/:id", async (req, res) => {
   const user = req.params.userid;
   try {
-    //encontrando la tarea especifica y borrandola
-    await task.findOneAndDelete({ user: user, id: req.params.id });
-    res.send({ status: "ok" });
-    console.log("oh shit bro");
+    //verificando el  token
+    const token = jwt.verify(req.body.token, process.env.SECRET);
+    if(token){
+      //encontrando la tarea especifica y borrandola
+      await task.findOneAndDelete({ user: user, id: req.params.id });
+      res.send({ status: "ok" });
+      console.log("oh shit bro");
+    }
+    else{
+      res.send({mesagge: 'token invalido'})
+    }
+    
+    
   } catch (err) {
     console.log(err);
   }

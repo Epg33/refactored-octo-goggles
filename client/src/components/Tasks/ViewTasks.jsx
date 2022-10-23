@@ -3,6 +3,7 @@ import axios from "axios";
 import Nav from "../Nav";
 import "../../styles/tasks/viewTasks.css";
 import CreateTask from "./CreateTask";
+import { deleteTask } from "./deleteTask";
 
 function ViewTasks() {
   const [taskDependency, setTaskDependency] = useState();
@@ -17,6 +18,7 @@ function ViewTasks() {
         <h3>{obj.title}</h3>
         <p>{obj.description}</p>
         <p>{obj.done ? 'hecha' : 'pendiente'}</p>
+        <button onClick={deleteTask(userid, obj.id, token, taskDependency, setTaskDependency)}>Borrar</button>
       </div>
 
     }))
