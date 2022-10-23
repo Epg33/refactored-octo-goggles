@@ -3,13 +3,26 @@ import axios from "axios";
 import Nav from "../Nav";
 import "../../styles/tasks/viewTasks.css";
 import CreateTask from "./CreateTask";
-import { deleteTask } from "./deleteTask";
 
 function ViewTasks() {
   const [taskDependency, setTaskDependency] = useState();
   const [tasks, setTasks] = useState(<></>)
   const token = localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
   let userid = '6353f1a7aeab8208d6c1b8fe';
+
+  const deleteTask = (userid,id, taskDependency, setTaskDependency) => {
+    axios.delete(`http://localhost:4000/task/${userid}/${id}`, {
+      data:{
+        "token": localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
+      }
+    })
+    .then(()=>{setTaskDependency(taskDependency? false :true)})
+    .catch(err=>console.log(err))
+  }
+
+  const callDelete = (obj) => {
+    deleteTask(userid, obj, taskDependency, setTaskDependency)
+  }
 
   const showTask = (taskprop) =>{
     console.log(taskprop.data);
@@ -18,7 +31,7 @@ function ViewTasks() {
         <h3>{obj.title}</h3>
         <p>{obj.description}</p>
         <p>{obj.done ? 'hecha' : 'pendiente'}</p>
-        <button onClick={deleteTask(userid, obj.id, token, taskDependency, setTaskDependency)}>Borrar</button>
+        {/* <button onClick={deleteTask(userid, obj.id, taskDependency, setTaskDependency)}>Borrar</button> */}
       </div>
 
     }))

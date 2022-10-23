@@ -1,4 +1,4 @@
-//importando express
+//importando
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const router = express.Router();
@@ -45,16 +45,15 @@ router.post("/:userid", async (req, res) => {
   const Task = new task({ user, title, description, done });
   try {
     //verificando el token
-    const token = jwt.verify(req.body.token, process.env.SECRET)
-    if(token){
+    const token = jwt.verify(req.body.token, process.env.SECRET);
+    if (token) {
       await Task.save();
-    res.send({ status: "ok" });
-    }
-    else{
-      res.send({message: 'invalid token'})
+      res.send({ status: "ok" });
+    } else {
+      res.send({ message: "invalid token" });
     }
     //guardando la tarea
-    
+
     // console.log("task saved");
   } catch (err) {
     console.log(err);
@@ -83,17 +82,14 @@ router.delete("/:userid/:id", async (req, res) => {
   try {
     //verificando el  token
     const token = jwt.verify(req.body.token, process.env.SECRET);
-    if(token){
+    if (token) {
       //encontrando la tarea especifica y borrandola
       await task.findOneAndDelete({ user: user, id: req.params.id });
       res.send({ status: "ok" });
       console.log("oh shit bro");
+    } else {
+      res.send({ mesagge: "token invalido" });
     }
-    else{
-      res.send({mesagge: 'token invalido'})
-    }
-    
-    
   } catch (err) {
     console.log(err);
   }
