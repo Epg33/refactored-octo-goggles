@@ -1,10 +1,15 @@
-import React from 'react'
-import '../../styles/tasks/viewTask.css'
+import React from "react";
+import "../../styles/tasks/viewTask.css";
 
-function ViewTask() {
+function ViewTask({obj}) {
   return (
-    <div>ViewTask</div>
-  )
+    <div key={obj._id}>
+      <h3>{obj.title}</h3>
+      <p>{obj.description}</p>
+      <p>{obj.done ? "hecha" : "pendiente"}</p>
+      {/* <button onClick={deleteTask(userid, obj.id, taskDependency, setTaskDependency)}>Borrar</button> */}
+    </div>
+  );
 }
 
-export default ViewTask
+export default ViewTask;

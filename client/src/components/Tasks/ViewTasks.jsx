@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Nav from "../Nav";
 import "../../styles/tasks/viewTasks.css";
+import ViewTask from "./ViewTask";
 import CreateTask from "./CreateTask";
 
 function ViewTasks() {
@@ -16,7 +17,7 @@ function ViewTasks() {
         "token": localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
       }
     })
-    .then(()=>{setTaskDependency(taskDependency? false :true)})
+    .then(()=>{setTaskDependency(taskDependency ? false :true)})
     .catch(err=>console.log(err))
   }
 
@@ -27,12 +28,13 @@ function ViewTasks() {
   const showTask = (taskprop) =>{
     console.log(taskprop.data);
     setTasks(taskprop.data.map(obj =>{
-      return <div key={obj._id}>
-        <h3>{obj.title}</h3>
-        <p>{obj.description}</p>
-        <p>{obj.done ? 'hecha' : 'pendiente'}</p>
-        {/* <button onClick={deleteTask(userid, obj.id, taskDependency, setTaskDependency)}>Borrar</button> */}
-      </div>
+      return <ViewTask key={obj._id} obj={obj} />
+      // <div key={obj._id}>
+      //   <h3>{obj.title}</h3>
+      //   <p>{obj.description}</p>
+      //   <p>{obj.done ? 'hecha' : 'pendiente'}</p>
+      //   {/* <button onClick={deleteTask(userid, obj.id, taskDependency, setTaskDependency)}>Borrar</button> */}
+      // </div>
 
     }))
   }
