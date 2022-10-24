@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Nav from "../Nav";
 import "../../styles/tasks/viewTasks.css";
@@ -14,7 +14,9 @@ function ViewTasks() {
   const showTask = (taskprop) =>{
     console.log(taskprop.data);
     setTasks(taskprop.data.map(obj =>{
-      return <ViewTask key={obj._id} obj={obj} userid={userid} taskDependency={taskDependency} setTaskDependency={setTaskDependency}/>
+      return (
+        <ViewTask key={obj._id} obj={obj} userid={userid} taskDependency={taskDependency} setTaskDependency={setTaskDependency}/>
+      )
     }))
   }
 
