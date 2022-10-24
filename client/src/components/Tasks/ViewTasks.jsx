@@ -21,21 +21,10 @@ function ViewTasks() {
     .catch(err=>console.log(err))
   }
 
-  const callDelete = (obj) => {
-    deleteTask(userid, obj, taskDependency, setTaskDependency)
-  }
-
   const showTask = (taskprop) =>{
     console.log(taskprop.data);
     setTasks(taskprop.data.map(obj =>{
-      return <ViewTask key={obj._id} obj={obj} />
-      // <div key={obj._id}>
-      //   <h3>{obj.title}</h3>
-      //   <p>{obj.description}</p>
-      //   <p>{obj.done ? 'hecha' : 'pendiente'}</p>
-      //   {/* <button onClick={deleteTask(userid, obj.id, taskDependency, setTaskDependency)}>Borrar</button> */}
-      // </div>
-
+      return <ViewTask key={obj._id} obj={obj} userid={userid} taskDependency={taskDependency} setTaskDependency={setTaskDependency}/>
     }))
   }
 
