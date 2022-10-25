@@ -11,12 +11,11 @@ function CreateTask({userid, taskDependency, setTaskDependency}) {
 
   const check = () => {
     if (done.checked){
-      done.checked = false
-    }
-    else {
       done.checked = true
     }
-    checkFormat()
+    else {
+      done.checked = false
+    }
   }
 
   const checkFormat = () => {
@@ -35,10 +34,10 @@ function CreateTask({userid, taskDependency, setTaskDependency}) {
     axios.post(`http://localhost:4000/task/${userid}`, {
       title: title.current.value,
       description: description.current.value,
-      done: done.checked,
+      done: done.checked ? done.cheked : false,
       token: localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
     })
-    setTaskDependency(taskDependency? false :true)
+    setTaskDependency(taskDependency ? false :true)
   }
   return (
     <>
@@ -48,7 +47,7 @@ function CreateTask({userid, taskDependency, setTaskDependency}) {
         </label>
         <textarea ref={description} required></textarea>
         <input type="checkbox" ref={done} defaultChecked={false} onClick={check}/>
-        <button onClick={check}>Guardar</button>
+        <button onClick={checkFormat}>Guardar</button>
       </div>
     </>
   );
