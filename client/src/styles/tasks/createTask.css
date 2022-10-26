@@ -20,7 +20,10 @@
 }
 
 .create-body {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
     z-index: 100;
+    width: 98.25vw;
+    height: 83vh;
+    display: grid;
+    place-content: center;
 }
