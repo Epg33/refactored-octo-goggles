@@ -27,3 +27,30 @@
     display: grid;
     place-content: center;
 }
+
+.modal {
+    display: grid;
+    place-content: center;
+    animation: mod 3s ease forwards;
+}
+
+
+@keyframes mod {
+    from {
+        height: 1vh;
+        width: 1vw;
+        display: grid;
+        place-content: center;
+    }
+
+    to {
+        height: 83vh;
+        width: 98.25vw;
+        display: grid;
+        place-content: center;
+    }
+}
+
+.create-title-container {
+    width: 50%;
+}
