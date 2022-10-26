@@ -5,6 +5,7 @@ import "../../styles/tasks/viewTasks.css";
 import CreateTask from "./CreateTask";
 
 function ViewTasks() {
+  const [openCreate, setOpenCreate] = useState(false);
   const [taskDependency, setTaskDependency] = useState();
   const [tasks, setTasks] = useState(<></>)
   const token = localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
@@ -47,8 +48,11 @@ function ViewTasks() {
     <>
       <Nav />
       <main className="viewTasks-body">
-        <h1>Tareas</h1>
-        <CreateTask userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency}/>
+        <header className="viewTasks-header">
+          <h1 className="viewTasks-title">Tareas</h1>
+          <button onClick={()=>setOpenCreate(true)}>Agregar</button>
+        </header>
+        <CreateTask userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency} openCreate={openCreate} setOpenCreate={setOpenCreate}/>
         <section>
           {tasks}
         </section>

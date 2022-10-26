@@ -1,0 +1,8 @@
+.create-body{
+    position: absolute;
+    z-index: 100;
+    width: 98.25vw;
+    height: 83vh;
+    display: grid;
+    place-content: center;
+}

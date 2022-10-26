@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "../../styles/tasks/createTask.css";
 
-function CreateTask({userid, taskDependency, setTaskDependency}) {
+function CreateTask({userid, taskDependency, setTaskDependency, openCreate, setOpenCreate}) {
+  
   const regEx = new RegExp('[^A-Za-z]*[a-z]')
   const title = useRef()
   const description = useRef()
@@ -29,14 +30,17 @@ function CreateTask({userid, taskDependency, setTaskDependency}) {
     })
     setTaskDependency(taskDependency ? false :true)
   }
-  return (
+  if(!openCreate){
+    return null
+  }
+  else return (
     <>
-      <div>
-        <label>
-          <input type="text" ref={title} required/>
+      <div className="create-body">
+        <label className="create-title-container">
+          <input type="text" className="create-title-input" placeholder="Titulo" ref={title} required/>
         </label>
-        <textarea ref={description} required></textarea>
-        <button onClick={checkFormat}>Guardar</button>
+        <textarea ref={description} className="create-description" placeholder="Description" required></textarea>
+        <button className="create-save" onClick={checkFormat}>Guardar</button>
       </div>
     </>
   );
