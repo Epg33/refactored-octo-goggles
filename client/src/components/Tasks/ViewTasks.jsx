@@ -10,9 +10,9 @@ function ViewTasks() {
   const token = localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
   let userid = '63581cf82aff19b47488c5f9';
 
-  const deleteTask = (userid, id, taskDependency, setTaskDependency) => {
+  const deleteTask = (id, taskDependency, setTaskDependency) => {
     axios
-      .delete(`http://localhost:4000/task/${userid}/${id}`, {
+      .delete(`http://localhost:4000/task/${id}`, {
         data: {
           token: localStorage.getItem("AuthTokenForLoginInThisSpecificApp"),
         },
@@ -30,7 +30,7 @@ function ViewTasks() {
           <p>{obj.description}</p>
           <p>{obj.done ? "hecha" : "pendiente"}</p>
           <button>Actualizar</button>
-          <button onClick={()=>deleteTask(userid, obj._id, taskDependency, setTaskDependency)}>Borrar</button>
+          <button onClick={()=>deleteTask(obj._id, taskDependency, setTaskDependency)}>Borrar</button>
         </div>
       )
     }))

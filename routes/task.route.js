@@ -84,7 +84,7 @@ router.delete("/:id", async (req, res) => {
     const token = jwt.verify(req.body.token, process.env.SECRET);
     if (token) {
       //encontrando la tarea especifica y borrandola
-      await task.findByIdAndDelete({ id });
+      await task.findByIdAndDelete({ _id:id });
       res.send({ status: "ok" });
       console.log("oh shit bro");
     } else {
