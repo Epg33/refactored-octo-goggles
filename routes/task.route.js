@@ -68,7 +68,7 @@ router.put("/:userid/:id", async (req, res) => {
   const user = req.params.userid;
   try {
     //encontrar la tarea especifica y actualizarla
-    await task.findOneAndUpdate({ user: user, id: req.params.id }, TASK);
+    await task.findOneAndUpdate({ user: user, _id: req.params.id }, TASK);
     console.log("todo bien");
     res.send({ status: "ok" });
   } catch (err) {

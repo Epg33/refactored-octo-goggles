@@ -1,8 +1,26 @@
-.create-body{
+/* .create-body{
     position: absolute;
     z-index: 100;
     width: 98.25vw;
     height: 83vh;
     display: grid;
     place-content: center;
+    transform: translate(-50%, -50%);
+} */
+
+.create-background {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.create-body {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
 }
