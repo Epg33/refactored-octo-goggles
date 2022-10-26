@@ -1,3 +1,7 @@
+:root {
+    --colour: #8b2828;
+}
+
 /* .create-body{
     position: absolute;
     z-index: 100;
@@ -45,7 +49,7 @@
 
     to {
         height: 83vh;
-        width: 98.25vw;
+        width: 100vw;
         display: grid;
         place-content: center;
     }
@@ -53,4 +57,25 @@
 
 .create-title-container {
     width: 50%;
+}
+
+.create-b {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    background-color: rgb(60, 148, 248);
+    animation: modal 1s ease forwards;
+}
+
+@keyframes modal {
+    from {
+        transform: scale(0.1);
+    }
+
+    to {
+        transform: scale(0.9);
+        width: 50vw;
+        height: 50vh;
+    }
 }

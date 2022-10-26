@@ -38,13 +38,15 @@ function CreateTask({userid, taskDependency, setTaskDependency, openCreate, setO
       <div className="create-background"></div>
       <div className="create-body">
         <div className="modal">
-          <label className="create-title-container">
-            <input type="text" className="create-title-input" placeholder="Titulo" ref={title} required/>
-          </label>
-          <textarea ref={description} className="create-description" placeholder="Description" required></textarea>
-          <div className="create-buttons-container">
-            <button className="create-cancel" onClick={()=>setOpenCreate(false)}>Cancelar</button>
-            <button className="create-save" onClick={checkFormat}>Guardar</button>
+          <div className="create-b">
+            <label className="create-title-container">
+              <input type="text" className="create-title-input" placeholder="Titulo" ref={title} required/>
+            </label>
+            <textarea ref={description} className="create-description" placeholder="Description" required></textarea>
+            <div className="create-buttons-container">
+              <button className="create-cancel" onClick={()=>setOpenCreate(false)}>Cancelar</button>
+              <button className="create-save" onClick={checkFormat}>Guardar</button>
+            </div>
           </div>
         </div>
       </div>
