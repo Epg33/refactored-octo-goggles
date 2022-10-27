@@ -26,12 +26,12 @@ function ViewTasks() {
     console.log(taskprop.data);
     setTasks(taskprop.data.map(obj =>{
       return (
-        <div key={obj._id}>
-          <h3>{obj.title}</h3>
-          <p>{obj.description}</p>
-          <p>{obj.done ? "hecha" : "pendiente"}</p>
-          <button>Actualizar</button>
-          <button onClick={()=>deleteTask(obj._id, taskDependency, setTaskDependency)}>Borrar</button>
+        <div className="task-container" key={obj._id}>
+          <h3 className="task-title">{obj.title}</h3>
+          <p className="task-description">{obj.description}</p>
+          <p className="task-state">{obj.done ? "hecha" : "pendiente"}</p>
+          <button className="task-update">Actualizar</button>
+          <button className="task-delete" onClick={()=>deleteTask(obj._id, taskDependency, setTaskDependency)}>Borrar</button>
         </div>
       )
     }))
@@ -53,7 +53,7 @@ function ViewTasks() {
           <button onClick={()=>setOpenCreate(true)}>Agregar</button>
         </header>
         <CreateTask userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency} openCreate={openCreate} setOpenCreate={setOpenCreate}/>
-        <section>
+        <section className="viewTasks-container">
           {tasks}
         </section>
       </main>

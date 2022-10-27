@@ -1,3 +1,15 @@
 *{
     z-index: 1;
 }
+
+.viewTasks-body {
+    background-color: #374343;
+    color: #eee;
+    min-height: 92vh;
+    height: max-content;
+}
+
+.viewTasks-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+}
