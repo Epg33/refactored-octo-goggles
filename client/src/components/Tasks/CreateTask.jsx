@@ -44,8 +44,10 @@ function CreateTask({userid, taskDependency, setTaskDependency, openCreate, setO
             </label>
             <textarea ref={description} className="create-description" placeholder="Description" required></textarea>
             <div className="create-buttons-container">
-              <button className="create-cancel" onClick={()=>setOpenCreate(false)}>Cancelar</button>
-              <button className="create-save" onClick={checkFormat}>Guardar</button>
+              <div className="create-buttons-con">
+                <button className="create-cancel" onClick={()=>setOpenCreate(false)}>Cancelar</button>
+                <button className="create-save" onClick={checkFormat}>Guardar</button>
+              </div>
             </div>
           </div>
         </div>
