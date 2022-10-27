@@ -35,7 +35,7 @@
 .modal {
     display: grid;
     place-content: center;
-    animation: mod 3s ease forwards;
+    animation: mod 1s ease-in forwards;
 }
 
 
@@ -56,7 +56,53 @@
 }
 
 .create-title-container {
-    width: 50%;
+    width: 90%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-title-input {
+    width: 80%;
+    height: 55%;
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid rgb(12, 83, 163);
+    font-size: 1.3rem;
+    font-weight: 800;
+    outline: none;
+    color: #eee;
+    transition: all 1s ease;
+}
+
+.create-title-input:focus {
+    border-bottom: 2px solid #ddd;
+}
+
+.create-title-input::placeholder {
+    color: #dbdbdbe3;
+}
+
+.create-description {
+    max-width: 73%;
+    max-height: 60%;
+    min-width: 73%;
+    min-height: 60%;
+    outline: none;
+    font-size: 1rem;
+    padding: 1%;
+    color: #eee;
+    background-color: rgb(61, 139, 228);
+    box-shadow: inset 0 5px 8px 0 rgb(31, 38, 135, 0.37);
+    border: 2px solid rgb(46, 117, 199);
+    border-radius: 5px;
+}
+
+.create-description::placeholder {
+    color: #ccc;
 }
 
 .create-b {
@@ -65,7 +111,7 @@
     align-items: center;
     border-radius: 25px;
     background-color: rgb(60, 148, 248);
-    animation: modal 1s ease forwards;
+    animation: modal .5s ease forwards;
 }
 
 @keyframes modal {
