@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/tasks/updateTask.css' 
 
-function UpdateTask() {
+function UpdateTask({}) {
   return (
     <div>UpdateTask</div>
   )

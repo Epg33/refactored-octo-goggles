@@ -4,16 +4,17 @@ import axios from "axios";
 import Nav from "../Nav";
 import "../../styles/tasks/viewTasks.css";
 import CreateTask from "./CreateTask";
+import UpdateTask from "./UpdateTask"
 
 function ViewTasks() {
   //estados
   const [openCreate, setOpenCreate] = useState(false);
+  const [openUpdate, setOpenUpdate] = useState(false);
   const [taskDependency, setTaskDependency] = useState();
   const [tasks, setTasks] = useState(<></>)
   const token = localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
   const {userId} = useContext(AuthContext)
-  let userid = '63581cf82aff19b47488c5f9';
-
+  let userid = '63581cf82aff19b47488c5f9'
   //funcion para borrar una tarea especifica
   const deleteTask = (id, taskDependency, setTaskDependency) => {
     axios
@@ -44,11 +45,11 @@ function ViewTasks() {
 
   //Effect que llama todas las tareas del servidor
   useEffect(()=>{
-    axios.get(`http://localhost:4000/task/${userId}`,{
+    axios.get(`http://localhost:4000/task/${userid}`,{
         "token": token
     })
       .then(res=>showTask(res))
-  }, [taskDependency, token, userId])
+  }, [taskDependency, token, userid])
 
   return( 
     <>
@@ -58,7 +59,8 @@ function ViewTasks() {
           <h1 className="viewTasks-title">Tareas</h1>
           <button onClick={()=>setOpenCreate(true)}>Agregar</button>
         </header>
-        <CreateTask userid={userId} setTaskDependency={setTaskDependency} taskDependency={taskDependency} openCreate={openCreate} setOpenCreate={setOpenCreate}/>
+        <UpdateTask userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency} openUpdate={openUpdate} setOpenUpdate={setOpenUpdate}/>
+        <CreateTask userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency} openCreate={openCreate} setOpenCreate={setOpenCreate}/>
         <section className="viewTasks-container">
           {tasks}
         </section>
