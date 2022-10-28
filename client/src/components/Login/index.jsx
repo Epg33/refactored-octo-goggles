@@ -49,7 +49,7 @@ function Index() {
         console.log(res);
         window.localStorage.setItem("AuthTokenForLoginInThisSpecificApp",res.data.token);
         console.log(window.localStorage.getItem("AuthTokenForLoginInThisSpecificApp"));
-        setUserId(res.data.id)
+        window.localStorage.setItem("theIdForTheUserThatIsLoggedInThisApp", res.data.id)
         handleLoginRespose();
       })
       .catch((err) => handleLoginResposeErr(err));
