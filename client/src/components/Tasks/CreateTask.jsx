@@ -10,8 +10,8 @@ function CreateTask({userid, taskDependency, setTaskDependency, openCreate, setO
   const $ = (prop) => {return prop.current.value}
 
   const checkFormat = () => {
-    if($(title).length <6){
-      alert('El titulo debe tener al menos seis caracteres')
+    if($(title).length <4){
+      alert('El titulo debe tener al menos cuatro caracteres')
     }
     else if(!regEx.test($(title))){
       alert('el titulo solo puede contener letras')

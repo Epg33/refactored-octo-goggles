@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
       }
       const token = jwt.sign(tokenUser, process.env.SECRET)
       console.log(tokenUser);
-      res.send({ message: "user logged succesfully", token: token });
+      res.send({ message: "user logged succesfully", token: token, id: validatedUser.id });
     } else {
       res.status(409).send({ message: "wrong password" });
     }

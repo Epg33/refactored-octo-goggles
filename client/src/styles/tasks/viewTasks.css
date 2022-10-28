@@ -13,3 +13,16 @@
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
 }
+
+.task-container {
+    width: 250px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.task-description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

@@ -1,7 +1,7 @@
-import React, { useRef /*useContext*/ } from "react";
+import React, { useRef, useContext } from "react";
 import { MdEmail, MdLock } from "react-icons/md";
 import Nav from "../Nav";
-// import {AuthContext,AuthContextProvider} from '../context/AuthContext'
+import {AuthContext,AuthContextProvider} from '../context/AuthContext'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../styles/login/login.css";
@@ -12,6 +12,7 @@ function Index() {
   const password = useRef();
   const navigate = useNavigate();
   // const {setIsLogged} = useContext(AuthContext)
+  const { setUserId } = useContext(AuthContext)
 
   const validateLogin = (e) => {
     e.preventDefault();
@@ -46,13 +47,9 @@ function Index() {
       })
       .then((res) => {
         console.log(res);
-        window.localStorage.setItem(
-          "AuthTokenForLoginInThisSpecificApp",
-          res.data.token
-        );
-        console.log(
-          window.localStorage.getItem("AuthTokenForLoginInThisSpecificApp")
-        );
+        window.localStorage.setItem("AuthTokenForLoginInThisSpecificApp",res.data.token);
+        console.log(window.localStorage.getItem("AuthTokenForLoginInThisSpecificApp"));
+        setUserId(res.data.id)
         handleLoginRespose();
       })
       .catch((err) => handleLoginResposeErr(err));
