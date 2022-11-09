@@ -8,6 +8,7 @@ import UpdateTask from "./UpdateTask"
 
 function ViewTasks() {
   //estados
+  const [update, setUpdate] = useState(<></>)
   const [openCreate, setOpenCreate] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
   const [taskDependency, setTaskDependency] = useState();
@@ -30,9 +31,13 @@ function ViewTasks() {
   };
 
   const settingtheid = (id) => {
-    setTaskId(id)
+    setUpdate(<UpdateTask taskid={id} userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency} openUpdate={openUpdate} setOpenUpdate={setOpenUpdate}/>)
+    window.localStorage.setItem('taksUpdateId', id)
   }
 
+  const login = (i) => {
+    console.log(i);
+  }
   //funcion que muestra todas los tareas
   const showTask = (taskprop) =>{
     console.log(taskprop.data);
@@ -42,7 +47,7 @@ function ViewTasks() {
           <h3 className="task-title">{obj.title}</h3>
           <p className="task-description">{obj.description}</p>
           <p className="task-state">{obj.done ? "hecha" : "pendiente"}</p>
-          <button className="task-update" onClick={()=> {setOpenUpdate(true); settingtheid(obj._id)}}>Actualizar</button>
+          <button className="task-update" onClick={()=> {login(obj._id) /*setOpenUpdate(true); settingtheid(obj._id);*/}}>Actualizar</button>
           <button className="task-delete" onClick={()=>deleteTask(obj._id, taskDependency, setTaskDependency)}>Borrar</button>
         </div>
       )
@@ -65,7 +70,7 @@ function ViewTasks() {
           <h1 className="viewTasks-title">Tareas</h1>
           <button onClick={()=>setOpenCreate(true)}>Agregar</button>
         </header>
-        <UpdateTask taskid={taskId} userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency} openUpdate={openUpdate} setOpenUpdate={setOpenUpdate}/>
+        {update}
         <CreateTask userid={userid} setTaskDependency={setTaskDependency} taskDependency={taskDependency} openCreate={openCreate} setOpenCreate={setOpenCreate}/>
         <section className="viewTasks-container">
           {tasks}

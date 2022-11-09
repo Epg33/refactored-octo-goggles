@@ -2,10 +2,11 @@ import React from 'react'
 import '../../styles/tasks/updateTask.css' 
 
 function UpdateTask({taskId, userid, taskDependency, setTaskDependency, openUpdate, setOpenUpdate}) {
-  if(!openUpdate){
-    return null;
-  }
-  console.log(taskId);
+  // if(!openUpdate){
+  //   return null;
+  // }
+  const id = window.localStorage.getItem('taskUpdateId')
+  console.log(id, taskId);
   return (
     <div>xddd</div>
   )
