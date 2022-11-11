@@ -1,4 +1,5 @@
-import React, { useState, useEffect/*, useContext*/ } from "react";
+import React, { useState, useEffect,/*, useContext*/ 
+useRef} from "react";
 // import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import Nav from "../Nav";
@@ -7,6 +8,7 @@ import CreateTask from "./CreateTask";
 import UpdateTask from "./UpdateTask"
 
 function ViewTasks() {
+  const title = useRef();
   //estados
   const [update, setUpdate] = useState(<></>)
   const [openCreate, setOpenCreate] = useState(false);
@@ -36,8 +38,26 @@ function ViewTasks() {
   }
 
   const login = (i) => {
-    console.log(i);
-  }
+    setUpdate(function Update (){
+      return(<>
+      <div className="create-background"></div>
+        <div className="create-body">
+          <div className="modal">
+            <div className="create-b">
+              <h3 className="create-title">Crear Tarea</h3>
+              <label className="create-title-container">
+                <input type="text" className="create-title-input" placeholder="Titulo" id="title" ref={title} required/>
+              </label>
+              <textarea  className="create-description" placeholder="Description" required></textarea>
+              <div className="create-buttons-container">
+                <button className="create-cancel">Cancelar</button>
+                <button className="create-save" onClick={console.log(i)}>Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div></>
+    )}
+  )}
   //funcion que muestra todas los tareas
   const showTask = (taskprop) =>{
     console.log(taskprop.data);
