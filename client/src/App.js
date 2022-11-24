@@ -8,10 +8,6 @@ import ViewTasks from "./components/Tasks/ViewTasks";
 import Error404 from "./components/Error404";
 
 function App() {
-  // const {isLogged} = useContext(AuthContext)
-  // console.log(isLogged);
-
-  // const isLogged = window.localStorage.getItem('AuthTokenForLoginInThisSpecificApp')
   return (
     <>
       <BrowserRouter>
@@ -20,7 +16,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/account/tasks" element={/*isLogged? */ <ViewTasks /> /* <Navigate to='/' />*/}></Route>
+            <Route path="/account/tasks" element={<ViewTasks />}></Route>
             <Route path="*" element={<Error404 />}></Route>
             <Route></Route>
             <Route></Route>

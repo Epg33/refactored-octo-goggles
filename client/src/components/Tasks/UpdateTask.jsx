@@ -5,7 +5,7 @@ function UpdateTask({taskId, userid, taskDependency, setTaskDependency, openUpda
   // if(!openUpdate){
   //   return null;
   // }
-  const id = window.localStorage.getItem('taskUpdateId')
+  const id = window.localStorage.getItem('taskId')
   console.log(id, taskId);
   return (
     <div>xddd</div>
